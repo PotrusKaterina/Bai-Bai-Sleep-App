@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Text, View, ImageBackground } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import Timeline from '../../assets/icons/Timeline';
 import { config } from '../../config/config';
 import { styles } from './styles';
+import ImagePanResponderComponent from '../../components/imagePanResponderComponent/imagePanResponderComponent';
 
 export class SleepTrackingScreen extends Component {
     render() {
         return (
             <ImageBackground source={require('../../assets/images/background.jpg')} style={styles.backgraundImage}>
                 <View style={styles.container}>
-                    <Text>Sleep Tracking</Text>
+                    <ImagePanResponderComponent />
                 </View>
             </ImageBackground>
         );
