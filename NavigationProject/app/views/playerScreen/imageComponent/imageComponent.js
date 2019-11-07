@@ -32,7 +32,7 @@ export class ImageComponent extends Component {
     }
 
     render() {
-        const { item: { id, isFavorite } } = this.props;
+        const { item: { isFavorite } } = this.props;
         return (
             <ImageBackground source={require('../../../assets/images/motherKissesHerChild.jpg')} style={styles.backgraundImage}>
                 <View style={styles.container}>

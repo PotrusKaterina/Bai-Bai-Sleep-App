@@ -20,12 +20,14 @@ export class ButtonToRecord extends Component {
             playTime: '00:00:00',
             duration: '00:00:00',
             isRecording: false,
+            recordPath: ``,
         };
     }
 
     stopRecord = async () => {
         try {
             const { addSound, homemadeSoundName } = this.props;
+            const { recordPath } = this.state;
             const result = await this.audioRecorderPlayer.stopRecorder();
             this.audioRecorderPlayer.removeRecordBackListener();
             this.setState({
@@ -33,7 +35,7 @@ export class ButtonToRecord extends Component {
             });
             console.log(result);
             const id = new Date().getTime();
-            addSound({ text: homemadeSoundName, id, isFavourite: false, title: 'HOMEMADE', path: result })
+            addSound({ text: homemadeSoundName, id, isFavourite: false, title: 'HOMEMADE', path: recordPath })
         } catch (error) {
             console.warn(error)
         }
@@ -44,9 +46,10 @@ export class ButtonToRecord extends Component {
             const { homemadeSoundName } = this.props
             if (await getPermissions) {
                 const path = Platform.select({
-                    ios: `${homemadeSoundName}.m4a`,
-                    android: `storage/emulated/0/DCIM/${homemadeSoundName}.mp4`,
+                    ios: `${homemadeSoundName}.m3a`,
+                    android: `storage/emulated/0/DCIM/${homemadeSoundName}.mp3`,
                 });
+                this.setState({ recordPath: `file:///storage/emulated/0/DCIM/${homemadeSoundName}.mp3` })
                 const result = await this.audioRecorderPlayer.startRecorder(path);
                 this.audioRecorderPlayer.addRecordBackListener((e) => {
                     this.setState({
@@ -57,7 +60,6 @@ export class ButtonToRecord extends Component {
                     });
                     return;
                 });
-                console.log(`uri: ${result}`);
             }
         } catch (err) {
             console.warn(err);
@@ -68,8 +70,8 @@ export class ButtonToRecord extends Component {
         try {
             console.log('onStartPlay');
             const path = Platform.select({
-                ios: `${homemadeSoundName}.m4a`,
-                android: `storage/emulated/0/DCIM/${homemadeSoundName}.mp4`,
+                ios: `${homemadeSoundName}.m3a`,
+                android: `storage/emulated/0/DCIM/${homemadeSoundName}.mp3`,
             });
             const msg = await this.audioRecorderPlayer.startPlayer(path);
             this.audioRecorderPlayer.setVolume(1.0);

@@ -6,6 +6,7 @@ import { styles } from './styles';
 import { connect } from 'react-redux';
 import { setSoundSleeperMode } from './redux/soundSleeperSortActions';
 import { getSoundSleeperMode } from './soundSleeperApi';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export class SoundSleeperScreen extends Component {
     constructor(props) {
@@ -13,6 +14,20 @@ export class SoundSleeperScreen extends Component {
         this.state = {
             content: null,
         }
+    }
+
+    setHomemadeSoundToAsyncStorage = async () => {
+        try {
+            const { soundsList } = this.props;
+            const homemadeSounds = Object.values(soundsList).filter((value) => value.title === 'HOMEMADE');
+            await AsyncStorage.setItem('homemadeSounds', JSON.stringify(homemadeSounds));
+        } catch (err) {
+            console.warn(err);
+        }
+    }
+
+    componentDidUpdate = () => {
+        this.setHomemadeSoundToAsyncStorage();
     }
 
     static getDerivedStateFromProps(nextProps) {

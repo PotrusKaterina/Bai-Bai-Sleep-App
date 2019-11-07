@@ -4,9 +4,10 @@ import { styles } from './styles';
 import TextComponent from './textComponent/textComponent';
 import PlayerButtons from './buttonsOnPlayer/buttonsOnPlayer';
 import ImageComponent from './imageComponent/imageComponent';
-import { setFavourites } from '../soundSleeperScreen/redux/soundSleeperSortActions';
+import { setFavourites, deleteSound } from '../soundSleeperScreen/redux/soundSleeperSortActions';
 import { connect } from 'react-redux';
 import { setPlayerSettings } from './redux/playerSettingsActions';
+import HeaderButtons from '../createSoundScreen/headerButtons/headerButtons';
 
 export class PlayerScreen extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ export class PlayerScreen extends Component {
     }
 
     setChangeValue = (changeValue) => {
-        this.setState({changeValue});
+        this.setState({ changeValue });
     }
 
     componentDidMount() {
@@ -26,14 +27,22 @@ export class PlayerScreen extends Component {
         this.isFavourite = soundsList;
     }
 
+    deleteSoundOff = () => {
+        const { navigation, deleteSound } = this.props;
+        console.log('deleting', deleteSound)
+        navigation.navigate('SoundSleeperScreen');
+        deleteSound(this.id)
+    }
+
     render() {
-        const { soundsList, setFavourites, volume, duration, setPlayerSettings } = this.props;
+        const { soundsList, setFavourites, volume, duration, setPlayerSettings, deleteSound } = this.props;
         const { changeValue } = this.state;
         return (
             <ImageBackground source={require('../../assets/images/background.jpg')} style={styles.backgraundImage} style={styles.container}>
                 <ImageComponent {...{ setFavourites, soundsList, item: soundsList[this.id] }} />
                 <TextComponent {...{ volume, duration, setPlayerSettings, changeValue }} />
-                <PlayerButtons title={soundsList[this.id].text} volume={volume} setChangeValue={this.setChangeValue}/>
+                {/* <HeaderButtons deleteSound0={deleteSound} /> */}
+                <PlayerButtons title={soundsList[this.id].text} path={soundsList[this.id].path} volume={volume} duration={duration} setChangeValue={this.setChangeValue} />
             </ImageBackground >
         );
     }
@@ -53,7 +62,8 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = {
     setFavourites,
-    setPlayerSettings
+    setPlayerSettings,
+    deleteSound,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerScreen);

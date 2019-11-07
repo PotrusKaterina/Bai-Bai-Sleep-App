@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { styles } from './styles';
 import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from 'react-redux';
-import { setSoundSleeperMode, setSoundsList } from '../soundSleeperScreen/redux/soundSleeperSortActions';
+import { setSoundSleeperMode, setSoundsList, addSound } from '../soundSleeperScreen/redux/soundSleeperSortActions';
 import { setPlayerSettings } from '../playerScreen/redux/playerSettingsActions';
 
 export class SplashScreen extends Component {
@@ -35,8 +35,8 @@ export class SplashScreen extends Component {
 
     getDataFromAsyncStorage = async () => {
         try {
-            const { setSoundSleeperMode, soundsList, setPlayerSettings } = this.props;
-            let keys = ['login', 'soundSleeperMode', 'favourite', 'playerSettings']
+            const { setSoundSleeperMode, soundsList, setPlayerSettings, addSound } = this.props;
+            let keys = ['login', 'soundSleeperMode', 'favourite', 'playerSettings', 'homemadeSounds']
             await AsyncStorage.multiGet(keys).then(result => {
                 result.forEach((item) => {
                     if (item[1]) {
@@ -66,6 +66,9 @@ export class SplashScreen extends Component {
                                 setPlayerSettings(res)
                                 break;
                             };
+                            case 'homemadeSounds': {
+                                JSON.parse(item[1]).forEach((value) => addSound(value))
+                            }
                         }
                     }
                 })
@@ -94,6 +97,7 @@ const mapDispatchToProps = {
     setSoundSleeperMode,
     setSoundsList,
     setPlayerSettings,
+    addSound
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);

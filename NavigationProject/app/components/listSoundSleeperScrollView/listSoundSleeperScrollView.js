@@ -19,7 +19,7 @@ export class ListSounsSleeperScrollView extends Component {
         const { soundsList, setFavourites } = nextProps
         const arr = Object.values(soundsList);
         let content = arr.map((item) => <ListItem title={item.text} setFavourites={setFavourites} propOnPress={goToPlayer} key={item.text} isFavourite={item.isFavourite} id={item.id} />)
-        content.sort(compareCardItem);
+        content.sort(compareCardItem.title);
         const result = { content };
         return result;
     }

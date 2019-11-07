@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { styles } from './styles';
 import PlayerButton from '../../../components/buttons/playerButton/playerButton';
-import TrackPlayer from 'react-native-track-player';
-import { track1 } from '../../../../__mocks__/tracksMocks';
+import RNSoundLevel from 'react-native-sound-level'
 
+import TrackPlayer from 'react-native-track-player';
 export class PlayerButtons extends Component {
     constructor(props) {
         super(props);
@@ -22,25 +22,52 @@ export class PlayerButtons extends Component {
         TrackPlayer.setVolume(volume);
     }
 
-    play = async (activeButton) => {
-        const { title, volume } = this.props
-        this.setState({ activeTitle: activeButton });
-        await TrackPlayer.setupPlayer({});
-        await TrackPlayer.add([{
-            id: 'myFirstAudio',
-            url: require('../../../assets/music/song.mp3'),
-            title: title
-        }, track1]);
-        TrackPlayer.play();
-        TrackPlayer.setVolume(volume);
+    play = async () => {
+        try {
+            const { title, volume, path, duration } = this.props
+            RNSoundLevel.stop();
+            this.setState({ activeTitle: 'PLAY' });
+
+            await TrackPlayer.setupPlayer({});
+            await TrackPlayer.add([{
+                id: 'myFirstAudio',
+                url: path,
+                title: title
+            }]);
+
+            setTimeout(() => {
+                this.pause();
+                this.setState({ activeTitle: 'PAUSE' })
+
+            }, duration * 1000)
+
+            TrackPlayer.play();
+            TrackPlayer.setVolume(volume);
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 
-
+    listen = (activeButton) => {
+        this.pause(activeButton);
+        RNSoundLevel.start();
+        RNSoundLevel.onNewFrame = (data) => {
+            if (-20 < data.value) {
+                this.play();
+            }
+        }
+    }
 
     pause = async (activeButton) => {
-        this.setState({ activeTitle: activeButton });
-        await TrackPlayer.setupPlayer({});
-        TrackPlayer.stop();
+        try {
+            this.setState({ activeTitle: activeButton });
+            RNSoundLevel.stop();
+            await TrackPlayer.setupPlayer({});
+            TrackPlayer.stop();
+        } catch (err) {
+            console.warn(err);
+        }
     }
 
     render() {
@@ -49,7 +76,7 @@ export class PlayerButtons extends Component {
             <View style={styles.container}>
                 <PlayerButton title='PLAY' {...{ activeTitle, onPress: this.play }} />
                 <PlayerButton title='PAUSE'  {...{ activeTitle, onPress: this.pause }} />
-                <PlayerButton title='LISTEN'  {...{ activeTitle, onPress: this.play }} />
+                <PlayerButton title='LISTEN'  {...{ activeTitle, onPress: this.listen }} />
             </View>
         );
     }

@@ -1,13 +1,15 @@
 export const createArreySectionList = (sounds) => {
     let result = [];
-    const titles = Object.keys(sounds).map((key) => sounds[key].title);
-    const unicTitle = [... new Set(titles)];
-    const soundsArrey = Object.values(sounds);
-    result = unicTitle.reduce((arr, title) => {
-        const obj = { title };
-        obj.data = soundsArrey.filter((item) => item.title === title);
-        return [...arr, obj]
-    }, [])
+    if (typeof sounds === 'object') {
+        const titles = Object.keys(sounds).map((key) => sounds[key].title);
+        const unicTitle = [... new Set(titles)];
+        const soundsArrey = Object.values(sounds);
+        result = unicTitle.reduce((arr, title) => {
+            const obj = { title };
+            obj.data = soundsArrey.filter((item) => item.title === title);
+            return [...arr, obj]
+        }, [])
+    }
     return result;
 }
 

@@ -3,9 +3,8 @@ import { View, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-nativ
 import { styles } from './styles';
 import { config } from '../../config/config';
 import ButtonToRecord from './buttonToRecord/buttonToRecord';
-import { addSound } from '../soundSleeperScreen/redux/soundSleeperSortActions';
+import { addSound, deleteSound } from '../soundSleeperScreen/redux/soundSleeperSortActions';
 import { connect } from 'react-redux';
-
 
 export class CreateSoundScreen extends Component {
     constructor(props) {
@@ -16,7 +15,7 @@ export class CreateSoundScreen extends Component {
     }
 
     componentWillUnmount = () => {
-        this.setState({ homemadeSoundName: '' })
+        this.setState({ homemadeSoundName: '' });
     }
 
     setHomemadeSoundName = (text) => {

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthInput create snapshot AuthInput 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#424242",
+      "borderRadius": 4,
+      "margin": 5,
+      "padding": 10,
+      "width": 160,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#FFFFFF",
+        "fontWeight": "bold",
+      }
+    }
+  />
+</TouchableOpacity>
+`;

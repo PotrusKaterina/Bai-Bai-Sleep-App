@@ -6,21 +6,23 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --testMatch=\"**/__tests__/**/!(*e2e.js)\"",
     "lint": "eslint ."
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.6.2",
     "@react-native-community/slider": "^2.0.3",
+    "jest-enzyme": "7.0.2",
     "react": "16.9.0",
     "react-native": "0.61.2",
-    "react-native-audio-recorder-player": "^2.4.3",
+    "react-native-audio-recorder-player": "2.4.3",
     "react-native-gesture-handler": "1.4.0",
     "react-native-modal": "^11.4.0",
     "react-native-paper": "^3.0.0",
     "react-native-permissions": "^2.0.3",
     "react-native-reanimated": "1.3.0",
     "react-native-screens": "2.0.0-alpha.5",
+    "react-native-sound-level": "^1.1.5",
     "react-native-svg": "^9.12.0",
     "react-native-swift": "^1.2.2",
     "react-native-track-player": "^1.1.8",
@@ -37,13 +39,59 @@
     "@babel/core": "7.6.4",
     "@babel/runtime": "7.6.3",
     "@react-native-community/eslint-config": "0.0.3",
-    "babel-jest": "24.9.0",
+    "babel-jest": "24.8.0",
     "eslint": "6.5.1",
-    "jest": "24.9.0",
+    "jest": "24.8.0",
+    "jest-react-native": "18.0.0",
+    "jest-teamcity-reporter": "0.9.0",
     "metro-react-native-babel-preset": "0.51.1",
     "react-test-renderer": "16.9.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "testResultsProcessor": "jest-teamcity-reporter",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov"
+    ],
+    "collectCoverageFrom": [
+      "app//*.jsx",
+      "app//*.js"
+    ],
+    "coverageDirectory": "<rootDir>/src/coverageReport",
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/app/modules",
+      "<rootDir>/app/assets",
+      "<rootDir>/app/i18n",
+      "<rootDir>/app/App.js"
+    ],
+    "testPathIgnorePatterns": [
+      "snapshots"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation|react-navigation-redux-helpers)",
+      "node_modules/@react-native-community/async-storage/(?!(lib))",
+      "node_modules/(?!react-native|@react-native-community/async-storage|native-base-shoutem-theme|@shoutem/animation|@shoutem/ui|tcomb-form-native)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true
+      }
+    },
+    "setupFiles": [
+      "./__mocks__/jestSetup.js"
+    ],
+    "transform": {
+      ".+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    }
   }
 }
