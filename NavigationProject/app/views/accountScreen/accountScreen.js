@@ -1,13 +1,14 @@
 
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { styles } from './styles';
+import ImagePanResponderComponent from '../../components/imagePanResponderComponent/imagePanResponderComponent';
 
 export class AccountScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Account</Text>
+                <ImagePanResponderComponent />
             </View>
         );
     }
