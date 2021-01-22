@@ -8,6 +8,7 @@ const colors = {
     COLOR_DARK_BLUE: '#1292F8',
     COLOR_ROSE: '#F0686A',
     COLOR_GREEN: '#81AD00',
+    COLOR_LIGHT_VIOLET: '#BF73B4'
 }
 
 const screensNames = {

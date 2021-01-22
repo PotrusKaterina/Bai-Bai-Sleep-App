@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { styles } from './styles';
 import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from 'react-redux';
@@ -17,9 +17,9 @@ export class SplashScreen extends Component {
     componentDidMount = async () => {
         try {
             await this.getDataFromAsyncStorage();
-            //  setTimeout(() => {
-            this.navigate();
-            //  }, 2000);
+            setTimeout(() => {
+                this.navigate();
+            }, 2000);
         } catch (error) {
             console.warn(error);
         }
@@ -82,7 +82,8 @@ export class SplashScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text> SplashScreen </Text>
+                <Image style={styles.image} source={require('../../assets/images/splashScreen.jpg')} />
+                {/* <Text style={styles.text}> telephone nanny </Text> */}
             </View>
         );
     }
