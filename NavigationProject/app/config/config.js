@@ -15,6 +15,7 @@ const screensNames = {
     SleepTracking: "Sleep Tracking",
     SoundSleeperU: "Sound Sleeper U",
     Settings: "Settings",
+    MyGames: 'MyGames',
 }
 
 const textSize = {

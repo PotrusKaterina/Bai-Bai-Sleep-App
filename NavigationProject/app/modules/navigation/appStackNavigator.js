@@ -5,6 +5,7 @@ import { config } from '../../config/config';
 import PlayerScreen from '../../views/playerScreen/playerScreen';
 import CreateSoundScreen from '../../views/createSoundScreen/createSoundScreen';
 import CourseScreen from '../../views/courseScreen/courseScreen';
+import MyGames from '../../views/myGames/myGames'
 
 export const AppStackNavigator = createStackNavigator({
   DrawerNavigator: {
@@ -17,6 +18,7 @@ export const AppStackNavigator = createStackNavigator({
   PlayerScreen,
   CreateSoundScreen,
   CourseScreen,
+  MyGames,
 }, {
   defaultNavigationOptions: {
     headerTintColor: config.COLOR_WHITE,

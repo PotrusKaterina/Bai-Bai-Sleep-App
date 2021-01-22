@@ -8,17 +8,24 @@ export class DrawerContentComponent extends Component {
         const { navigation } = this.props;
         navigation.closeDrawer();
         navigation.navigate('AccountScreen');
-    }
+    };
+
+    goToGame = () => {
+        const { navigation } = this.props;
+        navigation.closeDrawer();
+        navigation.navigate('MyGames');
+    };
 
     exit = () => {
         const { navigation } = this.props;
         navigation.navigate('Auth');
-    }
+    };
 
     render() {
         return (
             <View style={styles.container}>
                 <DrawerButton title={'Account'} onPress={this.goToAccount} />
+                <DrawerButton title={'My Games'} onPress={this.goToGame} />
                 <DrawerButton title={'Exit'} onPress={this.exit} />
             </View>
         );
