@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { styles } from './styles';
 import Button from '../../components/buttons/button/button';
 import AsyncStorage from '@react-native-community/async-storage';
 import { createArreySectionList } from '../../components/listBlock/listBlockApi';
+import { Transition } from 'react-navigation-fluid-transitions';
 
 export class AuthorizationScreen extends Component {
 
@@ -30,9 +31,16 @@ export class AuthorizationScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Button onPress={this.goToForgotPasswordScreen} title={'Forgot password'} />
-                <Button onPress={this.goToRegistrationScreen} title={'Registration'} />
-                <Button onPress={this.goToHomeScreen} title={'OK'} />
+                <View style={styles.imageContainer}>
+                    <Transition shared="logo">
+                        <Image style={styles.image} source={require('../../assets/images/splashScreen.jpg')} />
+                    </Transition>
+                </View>
+                <View style={styles.buttonsContainer}>
+                    <Button onPress={this.goToHomeScreen} title={'Entrance'} />
+                    <Button onPress={this.goToForgotPasswordScreen} title={'Forgot password'} />
+                    <Button onPress={this.goToRegistrationScreen} title={'Registration'} />
+                </View>
             </View>
         );
     }

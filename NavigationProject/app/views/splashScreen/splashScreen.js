@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from 'react-redux';
 import { setSoundSleeperMode, setSoundsList, addSound } from '../soundSleeperScreen/redux/soundSleeperSortActions';
 import { setPlayerSettings } from '../playerScreen/redux/playerSettingsActions';
+import { Transition } from 'react-navigation-fluid-transitions';
 
 export class SplashScreen extends Component {
     constructor(props) {
@@ -82,7 +83,9 @@ export class SplashScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Image style={styles.image} source={require('../../assets/images/splashScreen.jpg')} />
+                <Transition shared="logo">
+                    <Image style={styles.image} source={require('../../assets/images/splashScreen.jpg')} />
+                </Transition>
                 {/* <Text style={styles.text}> telephone nanny </Text> */}
             </View>
         );

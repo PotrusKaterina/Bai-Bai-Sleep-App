@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { TextInput, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { TextInput, View, TouchableWithoutFeedback, Keyboard, Text, Image } from 'react-native';
 import { styles } from './styles';
 import Button from '../../components/buttons/button/button';
 import AsyncStorage from '@react-native-community/async-storage';
+import { Transition } from 'react-navigation-fluid-transitions';
 
 export class RegistrationScreen extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ export class RegistrationScreen extends Component {
 
     goToHomeScreen = () => {
         const { text } = this.state;
-        const { navigation} = this.props;
+        const { navigation } = this.props;
         if (text !== '') {
             this.setDataToAsyncStorage();
             navigation.navigate('Home');
@@ -51,11 +52,23 @@ export class RegistrationScreen extends Component {
 
     render() {
         return (
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={styles.container}>
-                    <TextInput style={styles.input} placeholder={'Input text...'} onChangeText={this.setText} />
-                    <Button onPress={this.goToHomeScreen} title={"OK"} />
-                    <Button onPress={this.goToForgotPasswordScreen} title={"Forgot Password"} />
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>
+                <View style={styles.cardContainer}>
+                    <View style={styles.card}>
+                        <View style={styles.imageContainer}>
+                            <Transition shared="logo">
+                                <Image style={styles.image} source={require('../../assets/images/splashScreen.jpg')} />
+                            </Transition>
+                        </View>
+                        <View style={styles.textAndInputConteiner}>
+                            <Text style={styles.titleText}>Login or Sign Up with your Username</Text>
+                            <TextInput style={styles.input} placeholder={'Username'} onChangeText={this.setText} />
+                        </View>
+                        <View style={styles.buttonsContainer}>
+                            <Button onPress={this.goToHomeScreen} styleProps={{ container: styles.button, title: styles.butonTitle }} title={"OK"} />
+                            <Button onPress={this.goToForgotPasswordScreen} styleProps={{ container: styles.button, title: styles.butonTitle }} title={"Forgot Password"} />
+                        </View>
+                    </View>
                 </View>
             </TouchableWithoutFeedback>
         );
