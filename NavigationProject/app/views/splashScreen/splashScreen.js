@@ -29,7 +29,7 @@ export class SplashScreen extends Component {
     navigate = () => {
         const { isRegistered } = this.state;
         const { navigation } = this.props;
-        const screen = isRegistered ? 'AuthorizationScreen' : 'RegistrationScreen';
+        const screen = isRegistered ? 'SoundSleeperScreen' : 'RegistrationScreen';
         const isComeFromSplash = true;
         navigation.navigate(screen, { isComeFromSplash });
     }

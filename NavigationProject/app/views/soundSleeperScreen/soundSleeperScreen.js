@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ImageBackground } from 'react-native';
+import { ImageBackground, View } from 'react-native';
 import Music_note from '../../assets/icons/Music_note';
 import { config } from '../../config/config';
 import { styles } from './styles';
@@ -40,16 +40,16 @@ export class SoundSleeperScreen extends Component {
     render() {
         const { content } = this.state;
         return (
-            <ImageBackground source={require('../../assets/images/background.jpg')} style={styles.backgraundImage} style={styles.container}>
+            <View style={styles.container}>
                 {content}
-            </ImageBackground >
+            </View>
         );
     }
 }
 
 SoundSleeperScreen.navigationOptions = ({ navigation }) => ({
     tabBarIcon: ({ focused }) => {
-        const color = focused ? config.COLOR_BLUE : config.COLOR_WHITE;
+        const color = focused ? config.COLOR_WHITE : config.COLOR_MIDDLE_VIOLET;
         return <Music_note {...{ color }} />;
     }
 });

@@ -4,12 +4,15 @@ import { config } from '../../../config/config';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
+        alignContent: 'center'
     },
     text: {
         margin: 15,
         marginBottom: 0,
-        color: config.COLOR_WHITE,
+        color: config.COLOR_LIGHT_VIOLET,
         fontSize: config.MIDLE.fontSize,
+        fontWeight: 'bold'
     },
     textContainer:{
         flexDirection: 'row',

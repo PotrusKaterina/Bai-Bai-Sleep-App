@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,      
+        flex: 2,
         alignItems: 'flex-end',
-        justifyContent : 'flex-end',
+        justifyContent: 'flex-end',
         margin: 10,
     },
     backgraundImage: {
@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
         marginBottom: 5,
         marginTop: 5,
     },
-    svgWrapper:{
-        width:40,
+    svgWrapper: {
+        width: 40,
         height: 40,
     }
 });

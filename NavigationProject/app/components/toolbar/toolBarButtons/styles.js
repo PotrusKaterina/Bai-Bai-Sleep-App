@@ -4,7 +4,7 @@ import { config } from '../../../config/config';
 export const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        backgroundColor: config.COLOR_GRAY,
+        backgroundColor: config.COLOR_LIGHT_VIOLET,
         justifyContent:'center',
         alignItems:'center',
         height: 35,
