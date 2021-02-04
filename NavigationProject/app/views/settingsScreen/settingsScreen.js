@@ -33,7 +33,7 @@ export class SettingsScreen extends Component {
 
 SettingsScreen.navigationOptions = ({ navigation }) => ({
     tabBarIcon: ({ focused }) => {
-        const color = focused ? config.COLOR_BLUE : config.COLOR_WHITE;
+        const color = focused ? config.COLOR_WHITE : config.COLOR_MIDDLE_VIOLET;
         return <Settings {...{ color }} />;
     }
 });

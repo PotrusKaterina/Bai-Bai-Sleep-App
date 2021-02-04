@@ -17,8 +17,8 @@ export class PlayerButton extends Component {
         const { title, activeTitle } = this.props;
         return (
             <TouchableWithoutFeedback onPress={this.onPress}>
-                <View style={[styles.container, { backgroundColor: (activeTitle === title) ? config.COLOR_DARK_BLUE : config.COLOR_MIDDLE_BLUE }]}>
-                    <Text style={styles.text}>
+                <View style={[styles.container, { backgroundColor: (activeTitle === title) ? config.COLOR_LIGHT_VIOLET : config.COLOR_WHITE }]}>
+                    <Text style={[styles.text, { color: (activeTitle === title) ? config.COLOR_WHITE : config.COLOR_LIGHT_VIOLET }]}>
                         {title}
                     </Text>
                 </View>
