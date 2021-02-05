@@ -48,7 +48,7 @@ export class SleepTrackingScreen extends Component {
 
 SleepTrackingScreen.navigationOptions = ({ navigation }) => ({
     tabBarIcon: ({ focused }) => {
-        const color = focused ? config.COLOR_BLUE : config.COLOR_WHITE;
+        const color = focused ? config.COLOR_WHITE : config.COLOR_MIDDLE_VIOLET;
         return <Timeline {...{ color }} />;
     }
 });
