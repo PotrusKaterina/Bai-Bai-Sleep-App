@@ -4,6 +4,10 @@ import { config } from '../../config/config';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
+        backgroundColor: config.COLOR_LIGHT_VIOLET_OPACITY
     },
     backgraundImage: {
         width: '100%',
@@ -11,13 +15,23 @@ export const styles = StyleSheet.create({
     },
     text: {
         alignSelf: 'center',
-        color: config.COLOR_WHITE,
-        fontSize: 20,
+        color: config.COLOR_LIGHT_VIOLET,
+        fontSize: 40,
+        fontFamily: 'Mystical Snow',
+
         margin: 40,
     },
-    timer: {
+    titleContainer: {
+        flex: 1
+    },
+    chartContainer: {
+        flex: 3,
+        width: '100%',
+    },
+    chart: {
+        height: '80%',
+        width: '95%',
         alignSelf: 'center',
-        color: config.COLOR_WHITE,
-        fontSize: 84,
+        justifyContent: 'flex-start'
     },
 });

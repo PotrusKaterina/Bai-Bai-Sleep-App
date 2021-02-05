@@ -1,46 +1,37 @@
 import React, { Component } from 'react';
-import { Text, View, ImageBackground } from 'react-native';
+import { Text, View, processColor } from 'react-native';
 import Timeline from '../../assets/icons/Timeline';
 import { config } from '../../config/config';
 import { styles } from './styles';
-import { NavigationEvents } from 'react-navigation';
+import { LineChart } from 'react-native-charts-wrapper';
+
+const VIOLET = processColor(config.COLOR_LIGHT_VIOLET);
 
 export class SleepTrackingScreen extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            timer: 0,
-        }
-    }
-
-    setTimer = () => {
-        const { timer } = this.state;
-        intervalID = setInterval(() => (
-            this.setState(previousState => (
-                { timer: previousState.timer + 1 }
-            ))
-        ), 1000);
-    }
-
-    stopTimer = () => {
-        clearInterval(intervalID)
-    }
+    };
 
     render() {
-        const { timer } = this.state;
         return (
-            <ImageBackground source={require('../../assets/images/background.jpg')} style={styles.backgraundImage}>
-                <View style={styles.container}>
+            <View style={styles.container}>
+                <View style={styles.titleContainer}>
                     <Text style={styles.text}>Track your sleep</Text>
-                    <Text style={styles.timer}>{timer}</Text>
-                    <NavigationEvents
-                        onWillFocus={payload => console.log('will focus', payload)}
-                        onDidFocus={this.setTimer}
-                        onWillBlur={payload => console.log('will blur', payload)}
-                        onDidBlur={this.stopTimer}
+                </View>
+                <View style={styles.chartContainer}>
+                    <LineChart style={styles.chart}
+                        data={{
+                            dataSets: [{
+                                values: [{ y: -224.1 }, { y: 238.5 }, { y: 1280.1 }, { y: -442.3 }, { y: -2280.1 }],
+                                label: 'Zero line dataset',
+                                config: {
+                                    colors: [VIOLET]
+                                }
+                            }],
+                        }}
                     />
                 </View>
-            </ImageBackground>
+            </View>
         );
     }
 }
