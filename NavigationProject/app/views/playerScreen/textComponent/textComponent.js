@@ -46,11 +46,11 @@ export class TextComponent extends Component {
         const { volume, duration } = this.state;
         return (
             <View style={styles.container}>
-                <Text style={styles.text}> Volume: {Math.round(volume * 100)}</Text>
-                <Slider value={volume} style={styles.slider} minimumValue={0} maximumValue={1} minimumTrackTintColor={config.COLOR_BLUE} maximumTrackTintColor={config.COLOR_LIGHT_GRAY} thumbTintColor={config.COLOR_BLUE}
+                <Text style={styles.text}>{` Volume: ${Math.round(volume * 100)}`.toUpperCase()}</Text>
+                <Slider value={volume} style={styles.slider} minimumValue={0} maximumValue={1} minimumTrackTintColor={config.COLOR_LIGHT_VIOLET} maximumTrackTintColor={config.COLOR_LIGHT_GRAY} thumbTintColor={config.COLOR_LIGHT_VIOLET}
                     onValueChange={this.changeVolume} />
-                <Text style={styles.text}> Duration: {Math.round(duration / 60)} min</Text>
-                <Slider value={duration} style={styles.slider} minimumValue={60} maximumValue={7200} minimumTrackTintColor={config.COLOR_BLUE} maximumTrackTintColor={config.COLOR_LIGHT_GRAY} thumbTintColor={config.COLOR_BLUE}
+                <Text style={styles.text}>{` Duration: ${Math.round(duration / 60)} min`.toUpperCase()}</Text>
+                <Slider value={duration} style={styles.slider} minimumValue={60} maximumValue={7200} minimumTrackTintColor={config.COLOR_LIGHT_VIOLET} maximumTrackTintColor={config.COLOR_WH} thumbTintColor={config.COLOR_LIGHT_VIOLET}
                     onValueChange={this.changeDuration} />
             </View>
         );

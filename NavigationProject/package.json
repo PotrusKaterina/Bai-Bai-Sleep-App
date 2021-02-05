@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest --testMatch=\"**/__tests__/**/!(*e2e.js)\"",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "link": "react-native link"
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.6.2",
@@ -28,6 +29,7 @@
     "react-native-track-player": "^1.1.8",
     "react-navigation": "4.0.10",
     "react-navigation-drawer": "^2.3.1",
+    "react-navigation-fluid-transitions": "^0.3.2",
     "react-navigation-stack": "1.10.2",
     "react-navigation-tabs": "^2.5.6",
     "react-redux": "7.1.1",

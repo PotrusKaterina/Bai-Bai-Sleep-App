@@ -7,8 +7,8 @@ export const styles = StyleSheet.create({
     },
     header: {
         padding: 14,
-        paddingBottom: 0,
         fontSize: 16,
-        color: config.COLOR_BLUE,
+        fontWeight: 'bold',
+        color: config.COLOR_LIGHT_VIOLET,
     },
 });
