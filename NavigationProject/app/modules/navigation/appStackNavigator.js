@@ -24,7 +24,7 @@ export const AppStackNavigator = createStackNavigator({
     headerTintColor: config.COLOR_WHITE,
 
     headerStyle: {
-      backgroundColor: config.COLOR_LIGHT_VIOLET,
+      backgroundColor: config.COLOR_GRAY,
     },
   }
 });

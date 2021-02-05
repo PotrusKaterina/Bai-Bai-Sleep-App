@@ -13,11 +13,11 @@ export class Button extends Component {
     }
 
     render() {
-        const { title, styleProps } = this.props;
+        const { title } = this.props;
         return (
-            <TouchableOpacity onPress={this.onButtonPress} style={styleProps?.container || styles.container}>
-                <Text style={styleProps?.title || styles.text}>
-                    {title.toUpperCase()}
+            <TouchableOpacity onPress={this.onButtonPress} style={styles.button}>
+                <Text style={styles.text}>
+                    {title}
                 </Text>
             </TouchableOpacity>
         );

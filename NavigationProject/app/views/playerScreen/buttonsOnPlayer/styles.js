@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     container: {
         justifyContent:'space-around',
         flexDirection: 'row',
-        flex: 2,     
+        flex: 1,     
         margin: 13,
     },
     text: {

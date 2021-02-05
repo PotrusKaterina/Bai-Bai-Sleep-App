@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import Button from '../../components/buttons/button/button';
-import { Transition } from 'react-navigation-fluid-transitions';
 
 export class ForgotPasswordScreen extends Component {
     componentDidMount() {
@@ -27,11 +26,6 @@ export class ForgotPasswordScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.imageContainer}>
-                    <Transition shared="logo">
-                        <Image style={styles.image} source={require('../../assets/images/splashScreen.jpg')} />
-                    </Transition>
-                </View>
                 <Button onPress={this.goToAuthorizationScreen} title={'Authorization'} />
                 <Button onPress={this.goToRegistrationScreen} title={'Registration'} />
             </View>
@@ -39,7 +33,7 @@ export class ForgotPasswordScreen extends Component {
     }
 }
 
-ForgotPasswordScreen.navigationOptions = ({ navigation }) => ({
+ForgotPasswordScreen.navigationOptions = ({navigation}) => ({
     title: 'Forgotyour password',
 });
 
