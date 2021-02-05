@@ -3,8 +3,9 @@ import { View, Text } from 'react-native';
 import { styles } from './styles';
 import PlayerButton from '../../../components/buttons/playerButton/playerButton';
 import RNSoundLevel from 'react-native-sound-level'
-
 import TrackPlayer from 'react-native-track-player';
+import { getPermissions } from '../../../services/permissionService';
+
 export class PlayerButtons extends Component {
     constructor(props) {
         super(props);
@@ -13,9 +14,10 @@ export class PlayerButtons extends Component {
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
         const { setChangeValue } = this.props;
         setChangeValue(this.changeValue);
+        await getPermissions();
     }
 
     changeValue = (volume) => {
@@ -49,7 +51,7 @@ export class PlayerButtons extends Component {
         }
     }
 
-    listen = (activeButton) => {
+    listen = async (activeButton) => {
         this.pause(activeButton);
         RNSoundLevel.start();
         RNSoundLevel.onNewFrame = (data) => {
