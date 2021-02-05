@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { ImageBackground } from 'react-native';
 import { styles } from './styles';
 import TextComponent from './textComponent/textComponent';
 import PlayerButtons from './buttonsOnPlayer/buttonsOnPlayer';
@@ -38,12 +38,12 @@ export class PlayerScreen extends Component {
         const { soundsList, setFavourites, volume, duration, setPlayerSettings, deleteSound } = this.props;
         const { changeValue } = this.state;
         return (
-            <View style={styles.container}>
+            <ImageBackground source={require('../../assets/images/background.jpg')} style={styles.backgraundImage} style={styles.container}>
                 <ImageComponent {...{ setFavourites, soundsList, item: soundsList[this.id] }} />
                 <TextComponent {...{ volume, duration, setPlayerSettings, changeValue }} />
                 {/* <HeaderButtons deleteSound0={deleteSound} /> */}
                 <PlayerButtons title={soundsList[this.id].text} path={soundsList[this.id].path} volume={volume} duration={duration} setChangeValue={this.setChangeValue} />
-            </View>
+            </ImageBackground >
         );
     }
 }

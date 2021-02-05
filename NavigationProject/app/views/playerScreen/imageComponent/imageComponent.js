@@ -34,7 +34,7 @@ export class ImageComponent extends Component {
     render() {
         const { item: { isFavorite } } = this.props;
         return (
-            <ImageBackground source={require('../../../assets/images/mothers-day-mom-child-flowers.jpg')} style={styles.container}>
+            <ImageBackground source={require('../../../assets/images/motherKissesHerChild.jpg')} style={styles.backgraundImage}>
                 <View style={styles.container}>
                     <TouchableWithoutFeedback onPress={this.toggleFavourite}>
                         <View style={styles.svgWrapper}>

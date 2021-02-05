@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
 import { styles } from './styles';
 import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from 'react-redux';
 import { setSoundSleeperMode, setSoundsList, addSound } from '../soundSleeperScreen/redux/soundSleeperSortActions';
 import { setPlayerSettings } from '../playerScreen/redux/playerSettingsActions';
-import { Transition } from 'react-navigation-fluid-transitions';
 
 export class SplashScreen extends Component {
     constructor(props) {
@@ -18,9 +17,9 @@ export class SplashScreen extends Component {
     componentDidMount = async () => {
         try {
             await this.getDataFromAsyncStorage();
-            setTimeout(() => {
-                this.navigate();
-            }, 2000);
+            //  setTimeout(() => {
+            this.navigate();
+            //  }, 2000);
         } catch (error) {
             console.warn(error);
         }
@@ -29,7 +28,7 @@ export class SplashScreen extends Component {
     navigate = () => {
         const { isRegistered } = this.state;
         const { navigation } = this.props;
-        const screen = isRegistered ? 'SoundSleeperScreen' : 'RegistrationScreen';
+        const screen = isRegistered ? 'AuthorizationScreen' : 'RegistrationScreen';
         const isComeFromSplash = true;
         navigation.navigate(screen, { isComeFromSplash });
     }
@@ -83,10 +82,7 @@ export class SplashScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Transition shared="logo">
-                    <Image style={styles.image} source={require('../../assets/images/splashScreen.jpg')} />
-                </Transition>
-                {/* <Text style={styles.text}> telephone nanny </Text> */}
+                <Text> SplashScreen </Text>
             </View>
         );
     }

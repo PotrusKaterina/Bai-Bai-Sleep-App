@@ -16,13 +16,13 @@ const TabBarNavigator = createMaterialTopTabNavigator({
   tabBarOptions: {
     showIcon: true,    
     showLabel: false,
-    pressColor :  config.COLOR_WHITE,
+    pressColor :  config.COLOR_GRAY,
     style: {    
-      activeTintColor: config.COLOR_MIDDLE_VIOLET,
-      backgroundColor: config.COLOR_LIGHT_VIOLET,
+      activeTintColor: config.COLOR_WHITE,
+      backgroundColor: config.COLOR_GRAY,
     },
     indicatorStyle: {
-      backgroundColor: config.COLOR_WHITE
+      backgroundColor: config.COLOR_BLUE
     },
   },
 }
