@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ImageBackground, ScrollView, Image } from 'react-native';
+import { View, ScrollView, Image } from 'react-native';
 import { styles } from './styles';
 import CourseTitleComponent from './courseTitleComponent/courseTitleComponent';
 import CourseDescriptionComponent from './courseDescriptionComponent/courseDescriptionComponent';
@@ -15,14 +15,12 @@ export class CourseScreen extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('../../assets/images/background.jpg')} style={styles.backgraundImage} >
-                <ScrollView style={styles.container}>
-                    <Image style={styles.image} source={require('../../assets/images/motherAndChild.jpg')} />
-                    <CourseTitleComponent authors={this.signature} title={this.title}/>
-                    <CourseDescriptionComponent />
-                    <CurriculumList curriculumList={this.curriculumList}/>
-                </ScrollView>
-            </ImageBackground >
+            <ScrollView style={styles.container}>
+                <Image style={styles.image} resizeMode={'stretch'} source={require('../../assets/images/mamaimalish1.jpg')} />
+                <CourseTitleComponent authors={this.signature} title={this.title} />
+                <CourseDescriptionComponent />
+                <CurriculumList curriculumList={this.curriculumList} />
+            </ScrollView>
         );
     }
 }

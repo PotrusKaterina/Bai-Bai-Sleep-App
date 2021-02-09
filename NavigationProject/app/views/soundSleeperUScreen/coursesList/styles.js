@@ -6,9 +6,10 @@ export const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
+        marginLeft: 5,
         padding: 7,
-        paddingBottom: 0,
         fontSize: 16,
-        color: config.COLOR_BLUE,
+        fontWeight: 'bold',
+        color: config.COLOR_LIGHT_VIOLET,
     },
 });

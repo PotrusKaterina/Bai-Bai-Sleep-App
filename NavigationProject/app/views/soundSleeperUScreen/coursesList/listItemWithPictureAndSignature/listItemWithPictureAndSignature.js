@@ -10,15 +10,15 @@ export class ListItemWithPictureAndSignature extends Component {
 
     onPress = () => {
         const { onPress, title, authors, curriculumList } = this.props;
-        onPress( title, authors, curriculumList);
+        onPress(title, authors, curriculumList);
     }
 
     render() {
         const { title, authors } = this.props;
         return (
-            <TouchableHighlight style={styles.item} underlayColor={config.COLOR_LIGHT_GRAY} onPress={this.onPress}>
+            <TouchableHighlight style={styles.item} underlayColor={config.COLOR_LIGHT_VIOLET} onPress={this.onPress}>
                 <View style={styles.container}>
-                    <Image style={styles.image} source={require('../../../../assets/images/motherAndChild.jpg')} />
+                    <Image style={styles.image} source={require('../../../../assets/images/mamaimalish1.jpg')} />
                     <View style={styles.textContainer}>
                         <Text style={styles.title}>{title}</Text>
                         <Text style={styles.authors}>{authors}</Text>

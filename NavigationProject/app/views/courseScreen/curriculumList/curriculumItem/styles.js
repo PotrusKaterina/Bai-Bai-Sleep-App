@@ -3,21 +3,21 @@ import { config } from '../../../../config/config';
 
 export const styles = StyleSheet.create({
     container: {
-            flexDirection: 'row',
-            alignItems: 'center',
-            borderColor: config.COLOR_LIGHT_GRAY,
-            borderBottomWidth: 0.3,
-            paddingBottom: 8,
-            marginTop: 8,
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderColor: config.COLOR_MIDDLE_VIOLET,
+        borderBottomWidth: 0.3,
+        paddingBottom: 8,
+        marginTop: 8,
     },
     title: {
         fontSize: 14,
         padding: 5,
         paddingTop: 3,
         paddingBottom: 0,
-        color: config.COLOR_WHITE,
+        color: config.COLOR_MIDDLE_VIOLET,
 
-    },  
+    },
     videoLenght: {
         fontSize: 10,
         padding: 5,
@@ -33,8 +33,9 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    numberInButton: {      
+    numberInButton: {
         fontSize: 18,
+        color: config.COLOR_DARK_VIOLET
     },
     textContainer: {
         marginBottom: 8,

@@ -7,13 +7,14 @@ export const styles = StyleSheet.create({
     },
     titleText: {
         alignSelf: 'center',
-        color: config.COLOR_BLUE,
+        color: config.COLOR_LIGHT_VIOLET,
+        fontWeight: 'bold',
         fontSize: 20,
         marginBottom: 10,
     },
     header: {
         margin: 10,
         fontSize: 15,
-        color: config.COLOR_BLUE,
+        color: config.COLOR_LIGHT_VIOLET,
     },
 });
