@@ -6,9 +6,8 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: "center",
     },
-
     text: {
-        color: config.COLOR_LIGHT_GRAY,
+        color: config.COLOR_LIGHT_VIOLET,
         ...config.MIDLE,
         
     },
