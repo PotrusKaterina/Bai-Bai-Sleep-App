@@ -4,7 +4,7 @@ import { config } from '../../config/config';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: config.COLOR_GRAY,
+        backgroundColor: config.COLOR_LIGHT_VIOLET,
     },
     text: {
         color: config.COLOR_WHITE,
