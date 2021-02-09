@@ -4,17 +4,14 @@ import { config } from '../../config/config';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: config.COLOR_LIGHT_VIOLET_OPACITY
     },
     backgraundImage: {
         width: '100%',
         height: '100%',
     },
-    text: {
-        color: config.COLOR_WHITE,
-        ...config.MIDLE,
-    },
     image: {
-        height: 170,
+        height: 200,
         width: '100%',
         resizeMode: 'cover'
     },

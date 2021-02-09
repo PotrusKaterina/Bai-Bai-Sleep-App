@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, ImageBackground, Image } from 'react-native';
+import { ScrollView, Image } from 'react-native';
 import Academy from '../../assets/icons/Academy';
 import { config } from '../../config/config';
 import { styles } from './styles';
@@ -9,12 +9,10 @@ export class SoundSleeperUScreen extends Component {
     render() {
         const { navigation } = this.props;
         return (
-            <ImageBackground source={require('../../assets/images/background.jpg')} style={styles.backgraundImage} >
-                <ScrollView style={styles.container}>
-                    <Image style={styles.image} source={require('../../assets/images/mothersAndChildren.jpg')} />
-                    <CoursesList navigation={navigation} />
-                </ScrollView>
-            </ImageBackground>
+            <ScrollView style={styles.container}>
+                <Image style={styles.image} source={require('../../assets/images/unnamed.jpg')} />
+                <CoursesList navigation={navigation} />
+            </ScrollView>
         );
     }
 }

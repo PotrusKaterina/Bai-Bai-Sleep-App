@@ -5,29 +5,35 @@ export const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     item: {
         padding: 7,
-        borderColor: config.COLOR_LIGHT_GRAY,
-        borderBottomWidth: 0.3,
+        marginBottom: 7,
+        width: '90%',
+        alignSelf: 'center',
+        borderRadius: 7,
+        backgroundColor: config.COLOR_WHITE,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+        elevation: 2,
     },
     title: {
-        fontSize: 14,
         padding: 5,
-        paddingTop: 3,
-        paddingBottom: 0,
-        color: config.COLOR_WHITE,
-
+        color: config.COLOR_MIDDLE_VIOLET,
     },
     signature: {
-        fontSize: 10,
+        fontSize: 12,
         padding: 5,
         paddingTop: 0,
-        color: config.COLOR_WHITE,
+        color: config.COLOR_LIGHT_VIOLET,
     },
     icon: {
         marginLeft: 20,
     },
-
 });

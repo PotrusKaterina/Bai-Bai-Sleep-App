@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SectionList, Text, ImageBackground } from 'react-native';
+import { SectionList, Text, View } from 'react-native';
 import Settings from '../../assets/icons/Settings';
 import { config } from '../../config/config';
 import { styles } from './styles';
@@ -19,14 +19,14 @@ export class SettingsScreen extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('../../assets/images/background.jpg')} style={styles.backgraundImage} >
+            <View style={styles.container} >
                 <SectionList
                     sections={settingsList}
                     keyExtractor={(item, index) => item + index}
                     renderItem={({ item }) => <ListItemWithSignature title={item.text} signature={item.signature} onPress={this.goToOneOfSettingsPage} />}
                     renderSectionHeader={({ section: { title } }) => (<Text style={styles.header}>{title}</Text>)}
                 />
-            </ImageBackground>
+            </View>
         );
     }
 }

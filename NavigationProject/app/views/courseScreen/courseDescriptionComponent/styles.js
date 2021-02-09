@@ -10,12 +10,13 @@ export const styles = StyleSheet.create({
     },
     titleText: {
         alignSelf: 'center',
-        color: config.COLOR_BLUE,
+        color: config.COLOR_LIGHT_VIOLET,
+        fontWeight: 'bold',
         fontSize: 20,
         marginBottom: 10,
     },
     descriptonText: {
-        color: config.COLOR_WHITE,
+        color: config.COLOR_MIDDLE_VIOLET,
         width: '94%',
         marginBottom: 10,
     },
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create({
         width: '100%',
         alignSelf: 'center',
         margin: 1.5,
-        borderBottomColor: config.COLOR_WHITE,
+        borderBottomColor: config.COLOR_LIGHT_VIOLET,
         borderBottomWidth: 1,
     },
 });
