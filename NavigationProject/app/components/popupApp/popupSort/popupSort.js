@@ -28,7 +28,7 @@ export class PopupSort extends Component {
                     </Text>
                         <PopupSortButton title={'Categories'} icon={<Categories />} clear={this.clear} {...{setSoundSleeperMode}} nameOfMode={'Categories'}/>
                         <PopupSortButton title={'ABC'} icon={<ABC />} clear={this.clear} {...{setSoundSleeperMode}} nameOfMode={'ABC'}/>
-                        <PopupSortButton title={'Favourites'} icon={<FillLike color={config.COLOR_WHITE} width={24} height={24}/>} clear={this.clear} {...{setSoundSleeperMode}} nameOfMode={'Favourites'}/>
+                        <PopupSortButton title={'Favourites'} icon={<FillLike color={config.COLOR_LIGHT_VIOLET} width={24} height={24}/>} clear={this.clear} {...{setSoundSleeperMode}} nameOfMode={'Favourites'}/>
                     </View>
                 </View>
             </TouchableWithoutFeedback>

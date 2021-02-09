@@ -15,7 +15,7 @@ export class DrawerButton extends Component {
     render() {
         const { title } = this.props;
         return (
-            <View>
+            <View style={styles.container} >
                 <TouchableOpacity onPress={this.onButtonPress}>
                     <Text style={styles.text}>
                         {title}

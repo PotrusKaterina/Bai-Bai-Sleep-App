@@ -18,7 +18,7 @@ export class DrawerContentComponent extends Component {
 
     exit = () => {
         const { navigation } = this.props;
-        navigation.navigate('Auth');
+        navigation.navigate('RegistrationScreen');
     };
 
     render() {
