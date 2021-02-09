@@ -29,7 +29,7 @@ export class CreateSoundScreen extends Component {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.container}>
                     <TextInput style={styles.input} placeholder={'Sound name'}
-                        placeholderTextColor={config.COLOR_LIGHT_GRAY} onChangeText={this.setHomemadeSoundName} />
+                        placeholderTextColor={config.COLOR_LIGHT_VIOLET} onChangeText={this.setHomemadeSoundName} />
                     <ButtonToRecord homemadeSoundName={homemadeSoundName} addSound={addSound} />
                 </View>
             </TouchableWithoutFeedback>
