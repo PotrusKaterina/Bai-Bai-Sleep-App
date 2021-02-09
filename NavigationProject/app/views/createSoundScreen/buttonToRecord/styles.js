@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         borderRadius: 50,
         alignItems: 'center',
         alignSelf: 'center',
-        backgroundColor: config.COLOR_DARK_BLUE,
+        backgroundColor: config.COLOR_MIDDLE_VIOLET,
         height: 90,
         width: 90,
     },

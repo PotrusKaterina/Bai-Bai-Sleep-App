@@ -4,13 +4,13 @@ import { config } from '../../config/config';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: config.COLOR_MIDDLE_GRAY,
+        backgroundColor: config.COLOR_LIGHT_VIOLET_OPACITY,
     },
     input: {
         alignSelf: 'center',
-        color: config.COLOR_WHITE,
+        color: config.COLOR_LIGHT_VIOLET,
         fontSize: 20,
-        borderBottomColor: config.COLOR_LIGHT_GRAY,
+        borderBottomColor: config.COLOR_LIGHT_VIOLET,
         borderBottomWidth: 1,
         width: '90%',
         padding: 35,

@@ -117,7 +117,7 @@ export class ButtonToRecord extends Component {
                     </TouchableHighlight>
                 </View >
                 <View style={styles.slider}>
-                    <Slider disabled value={recordSecs} maximumValue={72000} minimumTrackTintColor={config.COLOR_BLUE} maximumTrackTintColor={config.COLOR_LIGHT_GRAY} thumbTintColor={config.COLOR_BLUE} />
+                    <Slider disabled value={recordSecs} maximumValue={72000} minimumTrackTintColor={config.COLOR_MIDDLE_VIOLET} maximumTrackTintColor={config.COLOR_LIGHT_VIOLET} thumbTintColor={config.COLOR_MIDDLE_VIOLET} />
                 </View>
             </View>
         );
