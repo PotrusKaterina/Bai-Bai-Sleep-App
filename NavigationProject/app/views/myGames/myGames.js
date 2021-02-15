@@ -1,17 +1,18 @@
 
-import React, { Component } from 'react';
-import { ImageBackground } from 'react-native';
+import React from 'react';
+import { View, FlatList } from 'react-native';
+import GameItem from './gameItem/gameItem';
+import { games } from './services';
 import { styles } from './styles';
-import ImagePanResponderComponent from '../../components/imagePanResponderComponent/imagePanResponderComponent';
 
-export class MyGames extends Component {
-    render() {
-        return (
-            <ImageBackground source={require('../../assets/images/1585862428885.jpeg')} style={styles.container}>
-                <ImagePanResponderComponent />
-            </ImageBackground>
-        );
-    }
+export const MyGames = ({ navigation }) => {
+    return (
+        <View style={styles.container}>
+            <FlatList data={games} renderItem={({ item }) => (
+                <GameItem game={item} {...{ navigation }} />
+            )} />
+        </View>
+    );
 }
 
 export default MyGames;
