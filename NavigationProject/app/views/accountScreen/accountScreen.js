@@ -18,8 +18,6 @@ export const AccountScreen = () => {
                     mediaType: 'photo',
                     includeBase64: true,
                     quality: 0.3,
-                    // maxWidth: 200,
-                    // maxHeight: 200
                 },
                 async (response) => {
                     dispatch(setUserPhoto(response.data))

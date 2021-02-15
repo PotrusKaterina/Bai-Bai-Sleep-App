@@ -1,16 +1,15 @@
-
 import React, { Component } from 'react';
-import { View, Image, PanResponder, Animated } from 'react-native';
+import { View, Image, PanResponder, Animated, ImageBackground } from 'react-native';
 import { styles } from './styles';
 
-export class ImagePanResponderComponent extends Component {
+export class CosmosGame extends Component {
     constructor(props) {
         super(props);
         this.state = {
             pan: new Animated.ValueXY(),
             scale: new Animated.Value(1),
         };
-    }
+    };
 
     componentWillMount() {
         this.panResponder = PanResponder.create({
@@ -56,13 +55,13 @@ export class ImagePanResponderComponent extends Component {
         let imageStyle = { transform: [{ translateX }, { translateY }, { rotate }, { scale }] };
 
         return (
-            <View style={styles.container}>
+            <ImageBackground source={require('../../assets/images/1585862428885.jpeg')} style={styles.container}>
                 <Animated.View style={imageStyle} {...this.panResponder.panHandlers}>
                     <Image style={styles.image} source={require('../../assets/images/moon.png')} />
                 </Animated.View>
-            </View>
+            </ImageBackground>
         );
     }
 }
 
-export default ImagePanResponderComponent;
+export default CosmosGame;
