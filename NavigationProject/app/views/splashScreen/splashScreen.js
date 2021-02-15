@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { setSoundSleeperMode, setSoundsList, addSound } from '../soundSleeperScreen/redux/soundSleeperSortActions';
 import { setPlayerSettings } from '../playerScreen/redux/playerSettingsActions';
 import { Transition } from 'react-navigation-fluid-transitions';
+import { setUserName, setUserPhoto } from '../accountScreen/redux/userActions';
 
 export class SplashScreen extends Component {
     constructor(props) {
@@ -36,15 +37,15 @@ export class SplashScreen extends Component {
 
     getDataFromAsyncStorage = async () => {
         try {
-            const { setSoundSleeperMode, soundsList, setPlayerSettings, addSound } = this.props;
-            let keys = ['login', 'soundSleeperMode', 'favourite', 'playerSettings', 'homemadeSounds']
+            const { setSoundSleeperMode, soundsList, setPlayerSettings, addSound, setUserName, setUserPhoto } = this.props;
+            let keys = ['login', 'soundSleeperMode', 'favourite', 'playerSettings', 'homemadeSounds', 'user']
             await AsyncStorage.multiGet(keys).then(result => {
                 result.forEach((item) => {
                     if (item[1]) {
                         switch (item[0]) {
                             case 'login': {
                                 if (result) {
-                                    this.setState({ isRegistered: true })
+                                    this.setState({ isRegistered: true });
                                 }
                                 break;
                             };
@@ -68,7 +69,14 @@ export class SplashScreen extends Component {
                                 break;
                             };
                             case 'homemadeSounds': {
-                                JSON.parse(item[1]).forEach((value) => addSound(value))
+                                JSON.parse(item[1]).forEach((value) => addSound(value));
+                                break;
+                            };
+                            case 'user': {
+                                const user = JSON.parse(item[1]);
+                                setUserPhoto(user.photo);
+                                setUserName(user.name);
+                                break;
                             }
                         }
                     }
@@ -86,7 +94,7 @@ export class SplashScreen extends Component {
                 <Transition shared="logo">
                     <Image style={styles.image} source={require('../../assets/images/splashScreen.jpg')} />
                 </Transition>
-                {/* <Text style={styles.text}> telephone nanny </Text> */}
+                <Text style={styles.text}> Telephone nanny </Text>
             </View>
         );
     }
@@ -101,6 +109,8 @@ const mapDispatchToProps = {
     setSoundSleeperMode,
     setSoundsList,
     setPlayerSettings,
+    setUserName,
+    setUserPhoto,
     addSound
 };
 

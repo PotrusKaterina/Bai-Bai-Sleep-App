@@ -4,6 +4,8 @@ import { styles } from './styles';
 import Button from '../../components/buttons/button/button';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Transition } from 'react-navigation-fluid-transitions';
+import { setUserName } from '../accountScreen/redux/userActions';
+import { connect } from 'react-redux';
 
 export class RegistrationScreen extends Component {
     constructor(props) {
@@ -35,8 +37,11 @@ export class RegistrationScreen extends Component {
 
     setDataToAsyncStorage = async () => {
         const { text } = this.state;
+        const { setUserName } = this.props;
         try {
+            await AsyncStorage.setItem('user', JSON.stringify({ name: text, photo: '' }));
             await AsyncStorage.setItem('login', text);
+            setUserName(text);
         } catch (err) {
             console.warn("AsyncStorage setItem in registration screen ", err);
         }
@@ -84,4 +89,11 @@ RegistrationScreen.navigationOptions = ({ navigation }) => {
     return result;
 };
 
-export default RegistrationScreen;
+const mapStateToProps = (store) => ({
+});
+
+const mapDispatchToProps = {
+    setUserName,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationScreen);

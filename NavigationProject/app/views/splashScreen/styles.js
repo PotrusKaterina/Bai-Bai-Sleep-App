@@ -16,7 +16,9 @@ export const styles = StyleSheet.create({
         borderWidth: 2,
         backgroundColor: 'violet'
     },
-    text:{
-        // fontFamily: 'Verdana'
+    text: {
+        fontFamily: 'Mystical Snow',
+        fontSize: 20,
+        color: config.COLOR_LIGHT_VIOLET
     }
 });
