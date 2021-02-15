@@ -33,7 +33,6 @@ export class ButtonToRecord extends Component {
             this.setState({
                 recordSecs: 0,
             });
-            console.log(result);
             const id = new Date().getTime();
             addSound({ text: homemadeSoundName, id, isFavourite: false, title: 'HOMEMADE', path: recordPath })
         } catch (error) {
