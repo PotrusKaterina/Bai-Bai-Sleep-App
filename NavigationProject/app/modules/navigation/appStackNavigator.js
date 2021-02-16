@@ -6,7 +6,7 @@ import PlayerScreen from '../../views/playerScreen/playerScreen';
 import CreateSoundScreen from '../../views/createSoundScreen/createSoundScreen';
 import CourseScreen from '../../views/courseScreen/courseScreen';
 import MyGames from '../../views/myGames/myGames';
-import CosmosGame from '../../views/cosmosGame/cosmosGame';
+import GamesFacade from '../../views/gamesFacade/gamesFacade';
 
 export const AppStackNavigator = createStackNavigator({
   DrawerNavigator: {
@@ -20,7 +20,7 @@ export const AppStackNavigator = createStackNavigator({
   CreateSoundScreen,
   CourseScreen,
   MyGames,
-  CosmosGame,
+  GamesFacade,
 }, {
   defaultNavigationOptions: {
     headerTintColor: config.COLOR_WHITE,

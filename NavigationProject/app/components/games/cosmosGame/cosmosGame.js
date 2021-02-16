@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, PanResponder, Animated, ImageBackground } from 'react-native';
+import { Image, PanResponder, Animated, ImageBackground } from 'react-native';
 import { styles } from './styles';
 
 export class CosmosGame extends Component {
@@ -55,9 +55,9 @@ export class CosmosGame extends Component {
         let imageStyle = { transform: [{ translateX }, { translateY }, { rotate }, { scale }] };
 
         return (
-            <ImageBackground source={require('../../assets/images/1585862428885.jpeg')} style={styles.container}>
+            <ImageBackground source={require('../../../assets/images/1585862428885.jpeg')} style={styles.container}>
                 <Animated.View style={imageStyle} {...this.panResponder.panHandlers}>
-                    <Image style={styles.image} source={require('../../assets/images/moon.png')} />
+                    <Image style={styles.image} source={require('../../../assets/images/moon.png')} />
                 </Animated.View>
             </ImageBackground>
         );
