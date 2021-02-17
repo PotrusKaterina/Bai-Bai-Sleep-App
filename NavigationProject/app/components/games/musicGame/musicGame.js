@@ -1,12 +1,27 @@
-import React, { useRef } from 'react';
-import { PanResponder, Animated, ImageBackground } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { PanResponder, Animated, View } from 'react-native';
 import { styles } from './styles';
+import TrackPlayer from 'react-native-track-player';
+import { getNewVolume } from './services';
 
+let volume = 1;
 export const MusicGame = () => {
 
     const pan = useRef(new Animated.ValueXY());
     const scale = useRef(new Animated.Value(1));
-    const opacity = useRef(pan.current.y.interpolate({ inputRange: [-300, 0, 300], outputRange: [0.5, 1, 0.5] }));
+
+    useEffect(() => {
+        TrackPlayer.setupPlayer({}).then(() => {
+            TrackPlayer.add([{
+                id: 'MusicGame',
+                url: require('../../../assets/music/cloud-song.mp3'),
+                title: 'Music Game'
+            }]);
+        })
+        TrackPlayer.play();
+        TrackPlayer.setVolume(volume);
+        return () => TrackPlayer.destroy();
+    }, []);
 
     const panResponder = useRef(PanResponder.create({
         onMoveShouldSetResponderCapture: () => true,
@@ -23,6 +38,9 @@ export const MusicGame = () => {
         },
 
         onPanResponderMove: (evt, gestureState) => {
+            let newVolume = getNewVolume(gestureState, volume);
+            volume = newVolume;
+            TrackPlayer.setVolume(volume);
             Animated.event([
                 null, { dx: pan.current.x, dy: pan.current.y },
             ])(evt, gestureState)
@@ -42,12 +60,12 @@ export const MusicGame = () => {
 
     let rotate = '0deg';
     // Calculate the transform property and set it as a value for our style which we add below to the Animated.View component
-    let imageStyle = { transform: [{ translateX }, { translateY }, { rotate }, { scale: scale.current }], opacity: opacity.current };
+    let imageStyle = { transform: [{ translateX }, { translateY }, { rotate }, { scale: scale.current }] };
 
     return (
-        <ImageBackground source={require('../../../assets/images/gradient.jpg')} style={styles.container}>
-            <Animated.View style={[imageStyle, styles.round,]} {...panResponder.current.panHandlers} />
-        </ImageBackground>
+        <View style={styles.container}>
+            <Animated.Image source={require('../../../assets/images/cloud.png')} style={[imageStyle, styles.round,]} {...panResponder.current.panHandlers} />
+        </View>
     );
 }
 

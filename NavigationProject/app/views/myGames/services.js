@@ -1,5 +1,7 @@
 export const games = [
     { name: 'Cosmos' },
     { name: 'Two Balls' },
-    { name: 'Music Game' }
+    { name: 'Music' },
+    { name: 'Jungle' },
+    { name: 'Opacity' },
 ]

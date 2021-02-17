@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { styles } from './styles';
 import PlayerButton from '../../../components/buttons/playerButton/playerButton';
 import RNSoundLevel from 'react-native-sound-level'
@@ -47,7 +47,7 @@ export class PlayerButtons extends Component {
             TrackPlayer.setVolume(volume);
         }
         catch (err) {
-            console.log(err);
+            console.warn(err);
         }
     }
 
