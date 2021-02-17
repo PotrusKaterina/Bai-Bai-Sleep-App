@@ -5,12 +5,10 @@ export const styles = StyleSheet.create({
     container: {
         height: '100%',
         width: '100%',
-        backgroundColor: config.COLOR_LIGHT_VIOLET_OPACITY
+        backgroundColor: config.COLOR_LIGHT_BLUE
     },
     round: {
-        height: 70,
-        width: 70,
-        backgroundColor: config.COLOR_LIGHT_VIOLET,
-        borderRadius: 100,
+        height: 120,
+        width: 220,
     },
 });

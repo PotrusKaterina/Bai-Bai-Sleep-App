@@ -74,7 +74,7 @@ export class ButtonToRecord extends Component {
             });
             const msg = await this.audioRecorderPlayer.startPlayer(path);
             this.audioRecorderPlayer.setVolume(1.0);
-            console.log(msg);
+            console.log('startPlay', msg);
             this.audioRecorderPlayer.addPlayBackListener((e) => {
                 this.setState({
                     currentPositionSec: e.current_position, currentDurationSec: e.duration, playTime: this.audioRecorderPlayer.mmssss(Math.floor(e.current_position)),

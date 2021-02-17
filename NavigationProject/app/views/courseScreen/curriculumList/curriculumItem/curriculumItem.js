@@ -18,7 +18,6 @@ export class CurriculumItem extends Component {
     render() {
         const { text, textVideoLenght, numberInSection } = this.props;
         const { isPressed } = this.state;
-        console.log('')
         return (
             <TouchableHighlight onPress={this.changeNumberColor} underlayColor={config.COLOR_LIGHT_GRAY} >
                 <View style={styles.container}>
