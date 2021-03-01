@@ -17,7 +17,7 @@ export const JungleGame = () => {
             }]);
         })
         TrackPlayer.play();
-        TrackPlayer.setVolume(volume);
+        TrackPlayer.setVolume(1);
         return () => TrackPlayer.destroy();
     }, []);
 
