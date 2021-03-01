@@ -4,4 +4,5 @@ export const games = [
     { name: 'Music' },
     { name: 'Jungle' },
     { name: 'Opacity' },
+    { name: 'Blow' },
 ]
