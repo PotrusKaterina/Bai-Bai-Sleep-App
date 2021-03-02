@@ -11,6 +11,9 @@ export class PlayerButtons extends Component {
         super(props);
         this.state = {
             activeTitle: 'PAUSE',
+            timeStart: 0,
+            timeListen: 0,
+            durationListen: 0
         }
     }
 
@@ -26,9 +29,10 @@ export class PlayerButtons extends Component {
 
     play = async () => {
         try {
-            const { title, volume, path, duration } = this.props
+            const { title, volume, path, duration, setSleepDuration } = this.props
             RNSoundLevel.stop();
-            this.setState({ activeTitle: 'PLAY' });
+            this.setState({ activeTitle: 'PLAY', timeStart: new Date().getTime() });
+            setSleepDuration(new Date().getTime());
 
             await TrackPlayer.setupPlayer({});
             await TrackPlayer.add([{
@@ -38,8 +42,8 @@ export class PlayerButtons extends Component {
             }]);
 
             setTimeout(() => {
-                this.pause();
-                this.setState({ activeTitle: 'PAUSE' })
+                this.listen();
+                this.setState({ activeTitle: 'LISTEN' })
 
             }, duration * 1000)
 
@@ -52,7 +56,13 @@ export class PlayerButtons extends Component {
     }
 
     listen = async (activeButton) => {
+        const { fallingAsleepDuration, fallingAsleepDurationFunc } = this.props;
+        const { timeListen, timeStart } = this.state;
         this.pause(activeButton);
+        console.log({ timeStart, timeListen: new Date().getTime(), fin: (new Date().getTime()) - timeStart / 1000 })
+        let durationFalling = (((new Date().getTime() - timeStart) / 1000) / 60);
+        console.log('durationFalling', durationFalling)
+        fallingAsleepDurationFunc(Math.floor(durationFalling));
         RNSoundLevel.start();
         RNSoundLevel.onNewFrame = (data) => {
             if (-20 < data.value) {
@@ -64,6 +74,7 @@ export class PlayerButtons extends Component {
     pause = async (activeButton) => {
         try {
             this.setState({ activeTitle: activeButton });
+            const { setSleepFinish } = this.props;
             RNSoundLevel.stop();
             await TrackPlayer.setupPlayer({});
             TrackPlayer.stop();

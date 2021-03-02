@@ -2,7 +2,7 @@ import { SET_PLAYER_SETTINGS } from "./playerSettingsActions";
 
 const INITIAL_STATE = {
     volume: 0.2,
-    duration: 1800,
+    duration: 60,
 };
 
 export const playerSettings = (state = INITIAL_STATE, action) => {

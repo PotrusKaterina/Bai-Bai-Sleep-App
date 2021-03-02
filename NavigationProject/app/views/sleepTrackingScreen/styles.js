@@ -18,7 +18,6 @@ export const styles = StyleSheet.create({
         color: config.COLOR_LIGHT_VIOLET,
         fontSize: 40,
         fontFamily: 'Mystical Snow',
-
         margin: 40,
     },
     titleContainer: {
@@ -34,4 +33,11 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'flex-start'
     },
+    instructionText: {
+        alignSelf: 'center',
+        color: config.COLOR_LIGHT_VIOLET,
+        fontSize: 20,
+        fontFamily: 'Mystical Snow',
+        margin: 40,
+    }
 });

@@ -7,6 +7,7 @@ import { setSoundSleeperMode, setSoundsList, addSound } from '../soundSleeperScr
 import { setPlayerSettings } from '../playerScreen/redux/playerSettingsActions';
 import { Transition } from 'react-navigation-fluid-transitions';
 import { setUserName, setUserPhoto } from '../accountScreen/redux/userActions';
+import { setSleepCourse } from '../sleepTrackingScreen/redux/sleepCourseActions';
 
 export class SplashScreen extends Component {
     constructor(props) {
@@ -37,8 +38,8 @@ export class SplashScreen extends Component {
 
     getDataFromAsyncStorage = async () => {
         try {
-            const { setSoundSleeperMode, soundsList, setPlayerSettings, addSound, setUserName, setUserPhoto } = this.props;
-            let keys = ['login', 'soundSleeperMode', 'favourite', 'playerSettings', 'homemadeSounds', 'user']
+            const { setSoundSleeperMode, soundsList, setPlayerSettings, addSound, setUserName, setUserPhoto, setSleepCourse } = this.props;
+            let keys = ['login', 'soundSleeperMode', 'favourite', 'playerSettings', 'homemadeSounds', 'user', 'sleepCourse']
             await AsyncStorage.multiGet(keys).then(result => {
                 result.forEach((item) => {
                     if (item[1]) {
@@ -77,6 +78,11 @@ export class SplashScreen extends Component {
                                 setUserPhoto(user.photo);
                                 setUserName(user.name);
                                 break;
+                            };
+                            case 'sleepCourse': {
+                                const sleepCourse = JSON.parse(item[1]);
+                                setSleepCourse(sleepCourse);
+                                break;
                             }
                         }
                     }
@@ -94,7 +100,7 @@ export class SplashScreen extends Component {
                 <Transition shared="logo">
                     <Image style={styles.image} source={require('../../assets/images/splashScreen.jpg')} />
                 </Transition>
-                <Text style={styles.text}> Telephone nanny </Text>
+                <Text style={styles.text}> Phone mammy </Text>
             </View>
         );
     }
@@ -111,6 +117,7 @@ const mapDispatchToProps = {
     setPlayerSettings,
     setUserName,
     setUserPhoto,
+    setSleepCourse,
     addSound
 };
 
