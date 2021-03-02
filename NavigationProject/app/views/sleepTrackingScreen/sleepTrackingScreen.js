@@ -3,33 +3,47 @@ import { Text, View, processColor } from 'react-native';
 import Timeline from '../../assets/icons/Timeline';
 import { config } from '../../config/config';
 import { styles } from './styles';
-import { LineChart } from 'react-native-charts-wrapper';
+import { BarChart } from 'react-native-charts-wrapper';
+import { connect } from 'react-redux';
 
 const VIOLET = processColor(config.COLOR_LIGHT_VIOLET);
 
 export class SleepTrackingScreen extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            sleepCourse: [],
+        }
     };
 
+    static getDerivedStateFromProps(nextProps) {
+        const { sleepCourses } = nextProps;
+        const sleepCourse = sleepCourses.map(item => Number(item.y));
+        const result = { sleepCourse };
+        return result;
+    }
+
     render() {
+        const { sleepCourse } = this.state;
+        const { sleepCourses } = this.props;
         return (
             <View style={styles.container}>
                 <View style={styles.titleContainer}>
                     <Text style={styles.text}>Track your sleep</Text>
                 </View>
                 <View style={styles.chartContainer}>
-                    <LineChart style={styles.chart}
+                    {sleepCourse ? <BarChart style={styles.chart}
                         data={{
                             dataSets: [{
-                                values: [{ y: -224.1 }, { y: 238.5 }, { y: 1280.1 }, { y: -442.3 }, { y: -2280.1 }],
-                                label: 'Zero line dataset',
+                                values: sleepCourse,
+                                label: 'Sleep Tracking',
                                 config: {
                                     colors: [VIOLET]
                                 }
                             }],
                         }}
                     />
+                        : <Text style={styles.instructionText}>There aren't information about sleep</Text>}
                 </View>
             </View>
         );
@@ -43,4 +57,12 @@ SleepTrackingScreen.navigationOptions = ({ navigation }) => ({
     }
 });
 
-export default SleepTrackingScreen;
+
+const mapStateToProps = (store) => ({
+    sleepCourses: store.sleepCourse.sleepingCourses,
+});
+
+const mapDispatchToProps = {
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SleepTrackingScreen);

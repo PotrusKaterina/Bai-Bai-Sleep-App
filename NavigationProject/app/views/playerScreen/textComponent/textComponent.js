@@ -50,7 +50,7 @@ export class TextComponent extends Component {
                 <Slider value={volume} style={styles.slider} minimumValue={0} maximumValue={1} minimumTrackTintColor={config.COLOR_LIGHT_VIOLET} maximumTrackTintColor={config.COLOR_LIGHT_GRAY} thumbTintColor={config.COLOR_LIGHT_VIOLET}
                     onValueChange={this.changeVolume} />
                 <Text style={styles.text}>{` Duration: ${Math.round(duration / 60)} min`.toUpperCase()}</Text>
-                <Slider value={duration} style={styles.slider} minimumValue={60} maximumValue={7200} minimumTrackTintColor={config.COLOR_LIGHT_VIOLET} maximumTrackTintColor={config.COLOR_WH} thumbTintColor={config.COLOR_LIGHT_VIOLET}
+                <Slider value={duration} style={styles.slider} minimumValue={45} maximumValue={900} minimumTrackTintColor={config.COLOR_LIGHT_VIOLET} maximumTrackTintColor={config.COLOR_WH} thumbTintColor={config.COLOR_LIGHT_VIOLET}
                     onValueChange={this.changeDuration} />
             </View>
         );
