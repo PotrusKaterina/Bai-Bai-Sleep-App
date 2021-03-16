@@ -23,6 +23,10 @@ export class PlayerButtons extends Component {
         await getPermissions();
     }
 
+    componentWillUnmount = () => {
+        TrackPlayer.destroy();
+    }
+
     changeValue = (volume) => {
         TrackPlayer.setVolume(volume);
     }

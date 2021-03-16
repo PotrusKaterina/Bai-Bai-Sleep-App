@@ -70,7 +70,6 @@ export class PlayerScreen extends Component {
             await AsyncStorage.setItem('sleepCourse', JSON.stringify(sleepCoursesNew));
             addSleepCourse({ y: fallingAsleepDuration || (((timeWhenUmnount - sleepDuration) / 1000) / 60) });
         }
-
     }
 
     deleteSoundOff = () => {
